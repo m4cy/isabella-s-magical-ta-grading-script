@@ -4,7 +4,7 @@
 # 2. student programs stored in another folder
 # 3. this script manually runs all scenarios and stores to student_name.txt
 
-while getopts p:s:h flag
+while getopts p:s: flag
 do
     case "${flag}" in
         p) pd=${OPTARG};;
@@ -21,7 +21,7 @@ for PROGRAM in "$pd"/*
     echo "////////// STUDENT: $STUDENT //////////"
     for SCENARIO in "$sd"/*
         do echo $SCENARIO
-        python3 $PROGRAM < $SCENARIO || echo 'student code broke'
+        python $PROGRAM < $SCENARIO || echo 'student code broke'
     done
     echo ""
 done > output.txt
