@@ -9,7 +9,7 @@ This script takes student programs and runs them against code scenarios, saving 
 2. Run
 ```
 chmod +uwx autorun.sh
-```.
+```
 3. Run the script
 ```
 ./autorun.sh -p <program-directory> -s <scenario-directory>
