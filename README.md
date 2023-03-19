@@ -12,5 +12,5 @@ chmod +uwx autorun.sh
 ```
 3. Run the script
 ```
-./autorun.sh -p <program-directory> -s <scenario-directory>
+./autorun.sh -p <program-directory> -s <scenario-directory> -t <time-out time (seconds)>
 ```
