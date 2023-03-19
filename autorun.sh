@@ -4,15 +4,23 @@
 # 2. student programs stored in another folder
 # 3. this script manually runs all scenarios and stores to student_name.txt
 
-while getopts p:s: flag
+while getopts p:s:t: flag
 do
     case "${flag}" in
         p) pd=${OPTARG};;
         s) sd=${OPTARG};;
+        t) time=${OPTARG};;
     esac
 done
 
-mkdir studentgrades
+function timeout_monitor() {
+   sleep "$time"
+   kill "$1"
+}
+
+timeout_monitor "$$" &
+timeout_monitor_pid=$!
+
 echo "student programs directory: $pd"
 echo "scenario directory: $sd"
 
@@ -25,3 +33,5 @@ for PROGRAM in "$pd"/*
     done
     echo ""
 done > output.txt
+
+kill "$timeout_monitor_pid"
